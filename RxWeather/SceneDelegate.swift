@@ -30,6 +30,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        //화면전환을 처리할 scenecoordinator
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        //api service객체와 location provider생성
+        let weatherApi = OpenWeatherMapApi()
+        let locationProvider = StaticLocationProvider()
+        
+        //ViewModel 생성 의존성주입
+        let viewModel = MainViewModel(title: "", sceneCoordinator: sceneCoordinator, weatherApi: weatherApi, locationProvider: locationProvider)
+        
+        //viewModel을 기반으로 새로운 scene생성
+        let scene = Scene.main(viewModel)
+        //scnenCoordinator를 사용 화면 표시
+        sceneCoordinator.transition(to: scene, using: .root, animated: false)
+        
         
     }
     
