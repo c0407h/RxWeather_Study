@@ -24,3 +24,22 @@
 import Foundation
 import CoreLocation
 import RxSwift
+
+
+//gps를 사용하는 provider를 구현하기 전에
+//고정된 위치를 사용하는 테스트용 Provider 생성
+
+struct StaticLocationProvider: LocationProviderType {
+    @discardableResult
+    func currentLocation() -> RxSwift.Observable<CLLocation> {
+        //강남역 위치정보 사용
+        return Observable.just(CLLocation.gangnamStation)
+    }
+    
+    
+    @discardableResult
+    func currentAddress() -> RxSwift.Observable<String> {
+        //강남역 주소
+        return Observable.just("강남역")
+    }
+}

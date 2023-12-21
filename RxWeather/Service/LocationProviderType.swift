@@ -25,3 +25,19 @@
 import Foundation
 import CoreLocation
 import RxSwift
+
+
+//LocationProvider가 구현해야하는 프로토콜
+protocol LocationProviderType {
+    @discardableResult
+    func currentLocation() -> Observable<CLLocation>
+    //현재 위치가 필요할 때 사용
+    
+    
+    @discardableResult
+    func currentAddress() -> Observable<String>
+    //현재 주소가 필요할 때 사용
+        
+    
+    
+}

@@ -113,7 +113,6 @@ class OpenWeatherMapApi: NSObject, WeatherApiType {
 
         //두 Relay를 Observable로 바꾼뒤 combineLatest로 결합해서 리턴
         return Observable.combineLatest(summarRelay.asObservable(), forecastRelay.asObservable())
-        
     }
     
     
