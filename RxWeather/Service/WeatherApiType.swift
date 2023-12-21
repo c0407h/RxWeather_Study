@@ -26,5 +26,13 @@ import CoreLocation
 import RxSwift
 
 protocol WeatherApiType {
+    //api가 공통적으로 구현하는 메소드 선언
+    
+    @discardableResult
+    func fetch(location: CLLocation) -> Observable<(WeatherDataType?, [WeatherDataType])>
+    //CLLocation 형식으로 위치정보를 받고 Observable return
+    //Observable이 방출하는 형식은 튜플 (첫번째:현재날씨, 두번째:날씨예고배열)
+    
+    
     
 }
