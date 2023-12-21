@@ -35,6 +35,16 @@ class ViewController: UIViewController, ViewModelBindableType {
     @IBOutlet weak var listTableView: UITableView!
     
     func bindViewModel() {
+        //ViewModel에 있는 title과 location label 바인딩
+        viewModel.title
+            .bind(to: locationLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        //날씨데이터를 테이블뷰에 바인딩
+        viewModel.weatherData
+            .drive(listTableView.rx.items(dataSource: viewModel.dataSource))
+            .disposed(by: rx.disposeBag)
+        
         
     }
     

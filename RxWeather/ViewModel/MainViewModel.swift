@@ -32,7 +32,7 @@ typealias SectionModel = AnimatableSectionModel<Int, WeatherData>
 
 class MainViewModel: HasDisposeBag {
     init(title: String, sceneCoordinator: SceneCoordinatorType, weatherApi: WeatherApiType, locationProvider: LocationProviderType) {
-        self.title = BehaviorSubject(value: title)
+        self.title = BehaviorRelay(value: title)
         self.sceneCoordinator = sceneCoordinator
         self.weatherApi = weatherApi
         self.locationProvider = locationProvider
@@ -60,7 +60,7 @@ class MainViewModel: HasDisposeBag {
     }()
     
     //주소바인딩할 때 사용
-    let title: BehaviorSubject<String>
+    let title: BehaviorRelay<String>
     
     //의존성과 관련된 속성 추가
     let sceneCoordinator: SceneCoordinatorType
